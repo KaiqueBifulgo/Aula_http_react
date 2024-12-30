@@ -1,0 +1,19 @@
+{
+    "games": [
+        {
+            "nome": "Dying ligth 2",
+            "plataforma": "ps5",
+            "id": 1
+        },
+        {
+            "nome": "Shadow the hedgehog",
+            "plataforma": "ps2",
+            "id": 2
+        },
+        {
+            "nome": "Apex legends",
+            "plataforma": "ps4 e ps5",
+            "id": 3
+        }
+    ]
+}
