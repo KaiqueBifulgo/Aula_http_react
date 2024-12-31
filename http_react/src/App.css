@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.add-game {
+  border-top: 1px solid #ea1212;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+}

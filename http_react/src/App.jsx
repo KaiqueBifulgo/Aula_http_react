@@ -21,6 +21,35 @@ function App() {
     getData();
   }, [])
 
+
+  // ENVIO DE DADOS
+  const [newGame, setNewGame] = useState("");
+  const [plataform, setPlataform] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const games = {
+      newGame,
+      plataform
+    }
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(games)
+    })
+
+    // CARREGAMENTO RAPIDO
+    const addedGame = await res.json();
+
+    setGames((prevProducts) => [
+      ...prevProducts, addedGame
+    ])
+  }
+
   return (
     <div>
       <h1>Http em react</h1>
@@ -34,6 +63,20 @@ function App() {
           </li>
         ))}
       </ul>
+      {/* ENVIANDO DADOS */}
+      <div className='add-game'>
+        <form onSubmit={handleSubmit}>
+          <label>
+            <span>Game</span>
+            <input type="text" value={newGame} onChange={(e) => setNewGame(e.target.value)} />
+          </label>
+          <label>
+            <span>Plataforma</span>
+            <input type="text" value={plataform} onChange={(e) => setPlataform(e.target.value)} />
+          </label>
+          <input type="submit" value="Enviar" />
+        </form>
+      </div>
     </div>
   )
 }
