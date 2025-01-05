@@ -7,10 +7,10 @@ const url = "http://localhost:3000/games"
 
 function App() {
   // RESGATANDO DADOS
-  const [games, setGames] = useState([]);
+  const [games, setGames, error] = useState([]);
 
   // CUSTOM HOOK
-  const {data: jogos} = useFetch(url);
+  const {data: jogos, loading} = useFetch(url);
 
   // useEffect(() => {
 
@@ -60,6 +60,10 @@ function App() {
   return (
     <div>
       <h1>Http em react</h1>
+      {/* LOADING */}
+      {loading && <p>Pagina carregando!</p>}
+      {/* TRATANDO ERRO */}
+      {error && <p>{error}</p>}
       {/* RESGATE DE DADOS */}
       <ul>
         {jogos && jogos.map((game) => (
@@ -81,7 +85,10 @@ function App() {
             <span>Plataforma</span>
             <input type="text" value={plataform} onChange={(e) => setPlataform(e.target.value)} />
           </label>
-          <input type="submit" value="Enviar" />
+          {/* <input type="submit" value="Enviar" /> */}
+          {/* LOADING POST */}
+          {loading && <input type="submit" disabled value="Carregando"/>}
+          {!loading && <input type="submit" value="Enviar" />}
         </form>
       </div>
     </div>
