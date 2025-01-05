@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useFetch } from './hooks/useFetch';
 
 import './App.css'
 
@@ -8,18 +9,21 @@ function App() {
   // RESGATANDO DADOS
   const [games, setGames] = useState([]);
 
-  useEffect(() => {
+  // CUSTOM HOOK
+  const {data: jogos} = useFetch(url);
 
-    async function getData () {
-      const res = await fetch(url);
+  // useEffect(() => {
 
-      const data = await res.json();
+  //   async function getData () {
+  //     const res = await fetch(url);
 
-      setGames(data);
-    }
+  //     const data = await res.json();
 
-    getData();
-  }, [])
+  //     setGames(data);
+  //   }
+
+  //   getData();
+  // }, [])
 
 
   // ENVIO DE DADOS
@@ -30,8 +34,8 @@ function App() {
     e.preventDefault();
 
     const games = {
-      newGame,
-      plataform
+      nome: newGame,
+      plataforma: plataform
     }
 
     const res = await fetch(url, {
@@ -48,6 +52,9 @@ function App() {
     setGames((prevProducts) => [
       ...prevProducts, addedGame
     ])
+
+    setNewGame("");
+    setPlataform("");
   }
 
   return (
@@ -55,7 +62,7 @@ function App() {
       <h1>Http em react</h1>
       {/* RESGATE DE DADOS */}
       <ul>
-        {games.map((game) => (
+        {jogos && jogos.map((game) => (
           <li key={game.id}> 
             {game.nome} - 
             plataforma:   

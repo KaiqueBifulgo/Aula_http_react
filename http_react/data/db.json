@@ -16,9 +16,19 @@
       "id": "3"
     },
     {
-      "id": "ebf8",
-      "newGame": "Alan Wake 2",
-      "plataform": "Ps5"
+      "id": "dc47",
+      "nome": "Alan Wake 2",
+      "plataforma": "Playstation 5"
+    },
+    {
+      "id": "9574",
+      "nome": "Batman arkham",
+      "plataforma": "ps4, ps3, ps5"
+    },
+    {
+      "id": "05ed",
+      "nome": "Life is strange - true colors",
+      "plataforma": "ps5"
     }
   ]
 }
